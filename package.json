@@ -1,0 +1,22 @@
+{
+  "name": "npg",
+  "version": "0.0.1",
+  "description": "Node Project Generator",
+  "main": "build/index.js",
+  "bin": {
+    "npg": "build/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.14.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
