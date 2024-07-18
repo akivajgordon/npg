@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs'
+import { execSync } from 'node:child_process'
 import path, { resolve } from 'path'
 
 function npmInit(projectPath: string) {
@@ -14,4 +15,35 @@ function npmInit(projectPath: string) {
   }
 }
 
-export default { init: npmInit }
+const installDependencies = (projectPath: string) => {
+  const devDependencies = [
+    'nodemon',
+    'npm-run-all',
+    'prettier',
+    'typescript',
+    '@types/node',
+  ].join(' ')
+
+  const dependencies = ['dotenv'].join(' ')
+
+  try {
+    console.log('Installing devDependencies...')
+    execSync(`npm install --save-dev ${devDependencies}`, {
+      cwd: projectPath,
+      stdio: 'inherit',
+    })
+
+    console.log('Installing dependencies...')
+    execSync(`npm install ${dependencies}`, {
+      cwd: projectPath,
+      stdio: 'inherit',
+    })
+
+    console.log('Dependencies installed.')
+  } catch (error) {
+    console.error('Error installing dependencies:', error)
+    process.exit(1)
+  }
+}
+
+export default { init: npmInit, installDependencies }
