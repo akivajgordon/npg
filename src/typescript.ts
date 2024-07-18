@@ -8,7 +8,8 @@ const initTsConfig = (projectPath: string) => {
     execSync('npx tsc --init', { cwd: projectPath, stdio: 'inherit' })
 
     const tsConfigPath = resolve(projectPath, 'tsconfig.json')
-    let tsConfig = JSON.parse(readFileSync(tsConfigPath, 'utf8'))
+    const contents = readFileSync(tsConfigPath, 'utf8')
+    let tsConfig = JSON.parse(stripJsonComments(contents))
 
     tsConfig.compilerOptions = {
       ...tsConfig.compilerOptions,
@@ -25,3 +26,7 @@ const initTsConfig = (projectPath: string) => {
 }
 
 export default { init: initTsConfig }
+
+const stripJsonComments = (jsonString: string): string => {
+  return jsonString.replace(/\/\/.*|\/\*[\s\S]*?\*\//g, '')
+}
