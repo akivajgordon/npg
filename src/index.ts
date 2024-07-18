@@ -4,6 +4,8 @@ import root from './root'
 import npm from './npm'
 import git from './git'
 import prettier from './prettier'
+import typescript from './typescript'
+import src from './src'
 
 const main = () => {
   const path = root.path()
@@ -16,7 +18,11 @@ const main = () => {
   npm.init(path)
   npm.installDependencies(path)
 
+  typescript.init(path)
+
   prettier.setup(path)
+
+  src.init(path)
 }
 
 main()
