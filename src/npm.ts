@@ -7,7 +7,12 @@ function npmInit(projectPath: string) {
     const initFile = resolve(__dirname, '../templates/npm-init.json')
     const npmInitContents = readFileSync(initFile, 'utf8')
 
-    writeFileSync(path.join(projectPath, 'package.json'), npmInitContents)
+    const pkg = JSON.parse(npmInitContents)
+
+    writeFileSync(
+      path.join(projectPath, 'package.json'),
+      JSON.stringify(pkg, null, 2),
+    )
     console.log('Initialized a new package.json file.')
   } catch (err) {
     console.error('Error initializing package.json:', err)
