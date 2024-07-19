@@ -1,7 +1,9 @@
 {
-  "name": "npg",
+  "name": "@akivajgordon/npg",
   "version": "0.0.1",
   "description": "Node Project Generator",
+  "repository": "github:akivajgordon/npg",
+  "author": "Akiva Gordon <akivag29@gmail.com>",
   "main": "build/index.js",
   "bin": {
     "npg": "build/index.js"
@@ -9,7 +11,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "prepublish": "npm run build"
   },
   "keywords": [],
   "author": "",
