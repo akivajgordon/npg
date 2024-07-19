@@ -1,14 +1,12 @@
-import { copyFileSync, mkdirSync } from 'node:fs'
-import { resolve } from 'path'
+import { mkdirSync } from 'node:fs'
+import { copyTemplate } from './copy'
+import { resolve, join } from 'node:path'
 
 const createIndexTs = (projectPath: string) => {
   const srcPath = resolve(projectPath, 'src')
-  const indexTsTemplatePath = resolve(__dirname, '../templates/index.ts')
-  const indexTsPath = resolve(srcPath, 'index.ts')
-
   mkdirSync(srcPath)
-  copyFileSync(indexTsTemplatePath, indexTsPath)
-  console.log('Created src/index.ts with "Hello, World!" message.')
+
+  copyTemplate(projectPath, 'index.ts', join('src', 'index.ts'))
 }
 
 export default { init: createIndexTs }

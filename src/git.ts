@@ -1,18 +1,8 @@
 import { execSync } from 'node:child_process'
-import { copyFileSync } from 'fs'
-import { resolve } from 'path'
+import { copyTemplate } from './copy'
 
 function addGitIgnore(projectPath: string) {
-  // Copy the gitignore template to the new project directory
-  const gitignoreTemplatePath = resolve(__dirname, '../templates/gitignore')
-  const gitignorePath = resolve(projectPath, '.gitignore')
-
-  try {
-    copyFileSync(gitignoreTemplatePath, gitignorePath)
-    console.log('Added .gitignore file.')
-  } catch (error) {
-    console.error('Error copying .gitignore file:', error)
-  }
+  return copyTemplate(projectPath, 'gitignore', '.gitignore')
 }
 
 function initializeGit(projectPath: string) {
