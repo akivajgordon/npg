@@ -2,11 +2,15 @@ import { existsSync, mkdirSync } from 'fs'
 import { basename, resolve } from 'path'
 
 function makeProjectDir(projectPath: string) {
-  const projectName = basename(projectPath)
+  const projName = projectName(projectPath)
 
   // Create the new project directory
   mkdirSync(projectPath)
-  console.log(`Project directory "${projectName}" created at ${projectPath}.`)
+  console.log(`Project directory "${projName}" created at ${projectPath}.`)
+}
+
+function projectName(projectPath: string) {
+  return basename(projectPath)
 }
 
 function getProjectPath() {
@@ -31,5 +35,6 @@ function getProjectPath() {
 
 export default {
   path: getProjectPath,
+  name: projectName,
   mkdir: makeProjectDir,
 }

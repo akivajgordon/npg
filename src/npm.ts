@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { execSync } from 'node:child_process'
 import path, { resolve } from 'path'
+import root from './root'
 
 function npmInit(projectPath: string) {
   try {
@@ -8,6 +9,8 @@ function npmInit(projectPath: string) {
     const npmInitContents = readFileSync(initFile, 'utf8')
 
     const pkg = JSON.parse(npmInitContents)
+
+    pkg.name = root.name(projectPath)
 
     writeFileSync(
       path.join(projectPath, 'package.json'),
