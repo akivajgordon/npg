@@ -12,6 +12,29 @@
 
 ## Usage
 
+Run using `npx`:
+
 ```sh
-npg my-proj
+npx @akivajgordon/npg /path/to/my-new-proj
 ```
+
+...or install globally and run:
+
+```sh
+npm install -g @akivajgordon/npg
+npg /path/to/my-new-proj
+```
+
+Jump into that newly created directory:
+
+```sh
+cd /path/to/my-new-proj
+```
+
+Now you can start dev mode:
+
+```sh
+npm run dev
+```
+
+Leave that terminal running and watch as it rebuilds and restarts your program whenever you edit your source code. Now the project is yours, so happy coding!
