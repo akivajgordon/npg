@@ -21,6 +21,7 @@ const main = () => {
   typescript.init(path)
 
   prettier.setup(path)
+  prettier.ignore(path)
 
   src.init(path)
 }
