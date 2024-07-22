@@ -1,12 +1,16 @@
 import { existsSync, mkdirSync } from 'fs'
 import { basename, resolve } from 'path'
+import logger from '@akivajgordon/logger'
 
 function makeProjectDir(projectPath: string) {
   const projName = projectName(projectPath)
 
   // Create the new project directory
   mkdirSync(projectPath)
-  console.log(`Project directory "${projName}" created at ${projectPath}.`)
+  logger.info(
+    '30d28338',
+    `Project directory "${projName}" created at ${projectPath}.`,
+  )
 }
 
 function projectName(projectPath: string) {
@@ -18,7 +22,8 @@ function getProjectPath() {
   const projectPath = process.argv[2]
 
   if (!projectPath) {
-    console.error('Please provide a project name.')
+    logger.info('0a3a680c')
+    logger.error('0a3a680c', 'Please provide a project name.')
     process.exit(1)
   }
 
@@ -26,7 +31,10 @@ function getProjectPath() {
   const resolvedProjectPath = resolve(process.cwd(), projectPath)
 
   if (existsSync(resolvedProjectPath)) {
-    console.error(`Error: Directory or file "${projectPath}" already exists.`)
+    logger.error(
+      '3f9d884a',
+      `Error: Directory or file "${projectPath}" already exists.`,
+    )
     process.exit(1)
   }
 

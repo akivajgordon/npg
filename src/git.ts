@@ -1,5 +1,6 @@
 import { execSync } from 'node:child_process'
 import { copyTemplate } from './copy'
+import logger from '@akivajgordon/logger'
 
 function addGitIgnore(projectPath: string) {
   return copyTemplate(projectPath, 'gitignore', '.gitignore')
@@ -8,9 +9,9 @@ function addGitIgnore(projectPath: string) {
 function initializeGit(projectPath: string) {
   try {
     execSync('git init', { cwd: projectPath })
-    console.log('Initialized a new Git repository.')
+    logger.info('c77cd493', 'Initialized a new Git repository')
   } catch (error) {
-    console.error('Error initializing Git repository:', error)
+    logger.error('02afe5bd', 'Error initializing Git repository:', error)
   }
 }
 
