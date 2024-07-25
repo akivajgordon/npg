@@ -1,10 +1,11 @@
 import { execSync } from 'node:child_process'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import logger from '@akivajgordon/logger'
 
 const initTsConfig = (projectPath: string) => {
   try {
-    console.log('Initializing tsconfig.json...')
+    logger.info('10cec765', 'Initializing tsconfig.json...')
     execSync('npx tsc --init', { cwd: projectPath, stdio: 'inherit' })
 
     const tsConfigPath = resolve(projectPath, 'tsconfig.json')
@@ -18,9 +19,9 @@ const initTsConfig = (projectPath: string) => {
     }
 
     writeFileSync(tsConfigPath, JSON.stringify(tsConfig, null, 2))
-    console.log('Updated tsconfig.json with outDir and rootDir.')
+    logger.info('23614f1a', 'Updated tsconfig.json with outDir and rootDir.')
   } catch (error) {
-    console.error('Error initializing tsconfig.json:', error)
+    logger.error('ae2a3810', 'Error initializing tsconfig.json:', error)
     process.exit(1)
   }
 }

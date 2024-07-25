@@ -1,9 +1,9 @@
 {
   "name": "@akivajgordon/npg",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node Project Generator",
   "repository": "github:akivajgordon/npg",
-  "author": "Akiva Gordon <akivag29@gmail.com>",
+  "author": "",
   "main": "build/index.js",
   "bin": {
     "npg": "build/index.js"
@@ -17,6 +17,7 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
+    "@akivajgordon/logger": "^0.0.3",
     "@types/node": "^20.14.11",
     "init-package-json": "^6.0.3",
     "ts-node": "^10.9.2",

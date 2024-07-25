@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { execSync } from 'node:child_process'
 import path, { resolve } from 'path'
+import logger from '@akivajgordon/logger'
 import root from './root'
 
 function npmInit(projectPath: string) {
@@ -16,9 +17,9 @@ function npmInit(projectPath: string) {
       path.join(projectPath, 'package.json'),
       JSON.stringify(pkg, null, 2)
     )
-    console.log('Initialized a new package.json file.')
+    logger.info('2e9fb180', 'Initialized a new package.json file.')
   } catch (err) {
-    console.error('Error initializing package.json:', err)
+    logger.error('bbcad5d3', 'Error initializing package.json:', err)
     process.exit(1)
   }
 }
@@ -46,21 +47,21 @@ const installDependencies = (
   const dependencies = dependenciesList.join(' ')
 
   try {
-    console.log('Installing devDependencies...')
+    logger.info('703ee083', 'Installing devDependencies...')
     execSync(`npm install --save-dev ${devDependencies}`, {
       cwd: projectPath,
       stdio: 'inherit',
     })
 
-    console.log('Installing dependencies...')
+    logger.info('1de04853', 'Installing dependencies...')
     execSync(`npm install ${dependencies}`, {
       cwd: projectPath,
       stdio: 'inherit',
     })
 
-    console.log('Dependencies installed.')
+    logger.info('5203ef63', 'Dependencies installed.')
   } catch (error) {
-    console.error('Error installing dependencies:', error)
+    logger.error('b4ba9c40', 'Error installing dependencies:', error)
     process.exit(1)
   }
 }
