@@ -15,7 +15,6 @@
     "prepublish": "npm run build"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^20.14.11",
