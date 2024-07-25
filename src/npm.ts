@@ -14,7 +14,7 @@ function npmInit(projectPath: string) {
 
     writeFileSync(
       path.join(projectPath, 'package.json'),
-      JSON.stringify(pkg, null, 2),
+      JSON.stringify(pkg, null, 2)
     )
     console.log('Initialized a new package.json file.')
   } catch (err) {
@@ -23,16 +23,27 @@ function npmInit(projectPath: string) {
   }
 }
 
-const installDependencies = (projectPath: string) => {
-  const devDependencies = [
+const installDependencies = (
+  projectPath: string,
+  { express }: { express: boolean } = { express: false }
+) => {
+  const devDependenciesList = [
     'nodemon',
     'npm-run-all',
     'prettier',
     'typescript',
     '@types/node',
-  ].join(' ')
+  ]
 
-  const dependencies = ['dotenv'].join(' ')
+  if (express) devDependenciesList.push('@types/express')
+
+  const devDependencies = devDependenciesList.join(' ')
+
+  const dependenciesList = ['dotenv']
+
+  if (express) dependenciesList.push('express')
+
+  const dependencies = dependenciesList.join(' ')
 
   try {
     console.log('Installing devDependencies...')
