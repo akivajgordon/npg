@@ -15,26 +15,14 @@
 Run using `npx`:
 
 ```sh
-npx @akivajgordon/npg /path/to/my-new-proj
+npx @akivajgordon/npg /path/to/my-new-proj [--express]
 ```
 
 ...or install globally and run:
 
 ```sh
 npm install -g @akivajgordon/npg
-npg /path/to/my-new-proj
-```
-
-To initialize the project with Express, add the `--express` option:
-
-```sh
-npx @akivajgordon/npg /path/to/my-new-proj --express
-```
-
-...or
-
-```sh
-npg /path/to/my-new-proj --express
+npg /path/to/my-new-proj [--express]
 ```
 
 Jump into that newly created directory:
