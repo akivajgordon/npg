@@ -19,11 +19,7 @@
   "dependencies": {
     "@akivajgordon/logger": "^0.0.3",
     "@types/node": "^20.14.11",
-    "init-package-json": "^6.0.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
-  },
-  "devDependencies": {
-    "@types/init-package-json": "^1.10.3"
   }
 }
