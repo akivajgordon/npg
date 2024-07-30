@@ -6,10 +6,11 @@ import git from './git'
 import prettier from './prettier'
 import typescript from './typescript'
 import src from './src'
+import cli from './cli'
 
-const main = () => {
-  const express = process.argv.includes('--express')
-  const path = root.path()
+const main = async (projectPath: string, options: { express: boolean }) => {
+  const { express } = options
+  const path = root.path(projectPath)
 
   root.mkdir(path)
 
@@ -29,4 +30,8 @@ const main = () => {
   src.init(path, { express })
 }
 
-main()
+cli.action((projectPath, options) => {
+  return main(projectPath, options)
+})
+
+cli.parseAsync()

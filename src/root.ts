@@ -17,16 +17,7 @@ function projectName(projectPath: string) {
   return basename(projectPath)
 }
 
-function getProjectPath() {
-  // Get the project name from command line arguments
-  const projectPath = process.argv[2]
-
-  if (!projectPath) {
-    logger.info('0a3a680c')
-    logger.error('0a3a680c', 'Please provide a project name.')
-    process.exit(1)
-  }
-
+function getProjectPath(projectPath: string) {
   // Resolve the full path of the new project directory
   const resolvedProjectPath = resolve(process.cwd(), projectPath)
 
