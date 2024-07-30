@@ -25,7 +25,20 @@ npm install -g @akivajgordon/npg
 npg /path/to/my-new-proj
 ```
 
-When creating your project you can add the `--express` flag to initialize the project as an express app
+Full usage: 
+
+```
+Usage: npg [options] <project-path>
+
+npg - node project generator
+
+Arguments:
+  project-path  path to the project to be generated
+
+Options:
+  --express     generate sample express file as main source
+  -h, --help    display help for command
+```
 
 Jump into that newly created directory:
 
