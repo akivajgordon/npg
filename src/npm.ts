@@ -15,7 +15,7 @@ function npmInit(projectPath: string) {
 
     writeFileSync(
       path.join(projectPath, 'package.json'),
-      JSON.stringify(pkg, null, 2)
+      JSON.stringify(pkg, null, 2),
     )
     logger.info('2e9fb180', 'Initialized a new package.json file.')
   } catch (err) {
@@ -26,7 +26,7 @@ function npmInit(projectPath: string) {
 
 const installDependencies = (
   projectPath: string,
-  { express }: { express: boolean } = { express: false }
+  { express }: { express: boolean } = { express: false },
 ) => {
   const devDependenciesList = [
     'nodemon',
@@ -40,7 +40,7 @@ const installDependencies = (
 
   const devDependencies = devDependenciesList.join(' ')
 
-  const dependenciesList = ['dotenv']
+  const dependenciesList = ['dotenv', '@akivajgordon/logger']
 
   if (express) dependenciesList.push('express')
 

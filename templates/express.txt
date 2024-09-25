@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import logger from '@akivajgordon/logger'
 
 dotenv.config()
 
@@ -11,4 +12,4 @@ app.use('/', (_req, res) => {
   res.json({ hello: 'world' })
 })
 
-app.listen(PORT, () => console.log(`listening on port ${PORT}...`))
+app.listen(PORT, () => logger.info('e1afa030', `Listening on port ${PORT}...`))
