@@ -1,6 +1,7 @@
 import { execSync } from 'node:child_process'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { parse } from 'jsonc-parser'
 import logger from '@akivajgordon/logger'
 
 const initTsConfig = (projectPath: string) => {
@@ -10,7 +11,7 @@ const initTsConfig = (projectPath: string) => {
 
     const tsConfigPath = resolve(projectPath, 'tsconfig.json')
     const contents = readFileSync(tsConfigPath, 'utf8')
-    let tsConfig = JSON.parse(stripJsonComments(contents))
+    let tsConfig = parse(contents)
 
     tsConfig.compilerOptions = {
       ...tsConfig.compilerOptions,
@@ -27,7 +28,3 @@ const initTsConfig = (projectPath: string) => {
 }
 
 export default { init: initTsConfig }
-
-const stripJsonComments = (jsonString: string): string => {
-  return jsonString.replace(/\/\/.*|\/\*[\s\S]*?\*\//g, '')
-}
